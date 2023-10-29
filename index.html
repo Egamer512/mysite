@@ -18,9 +18,20 @@
         <div class="main">
             <div class="widget">
                 <h3> widget 1</h3>
+                <div class = "notepad"> 
+                    <textarea id = "note-area" name = "message" rows = "20" cols = "40">
+
+
+                    </textarea>
+
+                </div>
+                <p><button id = "saveNoteBtn"> Save </button></p>
             </div>
+
+
             <div class="widget">
                 <h3> widget 2</h3>
+                <iframe src = "https://www.youtube.com/embed/YplNP2Tx9Rg?si=B3PnrfZOdVtmuPmN" width = "95%" height = "300vh" frameborder = "2"></iframe>
 
             </div>
             <div class="widget">
@@ -34,6 +45,12 @@
 
 
 <script>
+    try{
+        var loadNotes = localStorage.getItem("notes");
+    }catch(err){
+        var loadNotes = "Enter your Notes here and click Save"
+    }
+    $("#note-area")
     var sp = "/";
     var today = new Date();
 
@@ -49,6 +66,11 @@
     }
 
     $("#date").html(mm+sp+dd+sp+yyyy);
+
+    $("#saveNoteBtn").click(function(){
+        var currentNote = $("#note-area").val()
+        localStorage.setItem("notes", currentNote)
+    })
 </script>
 </html>
 
